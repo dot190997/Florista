@@ -1,0 +1,66 @@
+{% extends 'identify/navbar.html' %}
+{% load staticfiles %}
+
+{%  block navbar %}
+
+<style>
+    body{
+        background: url("{% static 'identify/bg.jpg' %}");
+        height: 100%;
+        min-height: 100%;
+    }
+
+    .div{
+        float: left;
+        height: 100%;
+        width: 50%;
+        vertical-align: center;
+       // padding-top: 25%;
+        text-align: center;
+        justify-content;
+        align-content: center;
+
+    }
+
+    .container{
+        width: 96%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+</style>
+<div class="container">
+        <div class="div" style="padding-top:130px; padding-left: 100px;">
+            <form action="{% url 'identify:index' %}" method="post" enctype="multipart/form-data">
+                {% for field in form %}
+                <div class="form-group">
+                    <label style="font-size: 20px;color: black; " >{{ field.label_tag }}</label >
+                    <div class="input" name="pop">{{ field }}</div>
+                </div>
+                {% endfor %}
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="div">
+            {% if all_images %}
+                <div style="width: 96%; content-align:center; text-align: center ;padding-left: 80px; padding-top:20px" >
+                    <!--h2  style="color: black;padding-bottom: 20px ; shadow: black;">Here are all the images entered thus far:</h2-->
+                    {% for image in all_images %}
+                        <div style="padding: 10px; float: left; text-align: center; color:white">
+                            <img style="height: 70px; width: 70px;" src="{{ image.flower_image.url }}"><br/>{{ image.flower_name }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+</div>
+
+
+
+{% endblock %}
+
+
+

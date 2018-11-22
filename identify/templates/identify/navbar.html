@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load staticfiles %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'identify/style_navbar.css' %}">
+
+    <meta charset="UTF-8">
+    <title>Florista</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="{% url 'identify:home' %}"><img src="{% static 'identify/logo.png' %}" height="60" width="150" ></a>
+        </div>
+        <div  id="identify_navbar" class="navbar-header">
+            <a id="" class="navbar-brand" href="{% url 'identify:index' %}">Identify</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'identify:history' %}">History</a>
+        </div>
+        <div>
+            <form class="navbar-form navbar-left" role="search" mehtod="get" action="{% url 'identify:search' %}">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="q" value="{{ request.GET.q }}">
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+{%  block navbar %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'identify/navbar.html' %}
+
+{% load staticfiles %}
+
+{%  block navbar %}
+
+
+
+<style>
+    body{
+    background: url("{% static 'identify/bg.jpg' %}");
+    }
+</style>
+<div style="width: 96%; content-align:center; text-align: center ;padding-left: 80px; padding-top:20px" >
+<h2  style="color: black;padding-bottom: 20px ; shadow: black;">Here are all the images entered thus far:</h2>
+
+    {% for image in all_images %}
+    <div style="padding: 10px; float: left; text-align: center; color:white">
+        <img style="height: 150px; width: 150px;" src="{{ image.flower_image.url }}"><br/>{{ image.flower_name }}
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}
